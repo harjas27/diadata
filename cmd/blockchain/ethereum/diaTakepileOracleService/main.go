@@ -53,12 +53,12 @@ func main() {
 		"0x0000000000000000000000000000000000000000", //ETC
 	}
 	blockchains := []string{
-		"Bitcoin",           //BTC
-		"Ethereum",          //ETH
-		"Fantom",            //FTM
-		"Avalanche",         //AVAX
-		"Ethereum",          //YFI
-		"EthereumClassic",   //ETC
+		"Bitcoin",         //BTC
+		"Ethereum",        //ETH
+		"Fantom",          //FTM
+		"Avalanche",       //AVAX
+		"Ethereum",        //YFI
+		"EthereumClassic", //ETC
 	}
 	oldPrices := make(map[int]float64)
 
@@ -179,7 +179,7 @@ func updateOracle(
 	if err != nil {
 		log.Fatal(err)
 	}
-  */
+	*/
 
 	gasPrice, err := getGasSuggestion()
 	if err != nil {
@@ -225,7 +225,7 @@ func getGraphqlAssetQuotationFromDia(blockchain, address string, blockDuration i
 	req := gql.NewRequest(`
     query  {
 		 GetChart(
-		 	filter: "ma", 
+		 	filter: "mair", 
 			Symbol:"Asset",
 			BlockDurationSeconds: ` + strconv.Itoa(blockDuration) + `, 
 			BlockShiftSeconds: ` + strconv.Itoa(blockDuration) + `,
@@ -275,7 +275,7 @@ func getGasSuggestion() (*big.Int, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	gasSuggestion := gjson.Get(string(contents), "result.FastGasPrice")
 	log.Printf(gasSuggestion.String())
 	retval := big.NewInt(int64(gasSuggestion.Float() * 1e9))

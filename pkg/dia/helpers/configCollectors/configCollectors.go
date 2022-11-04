@@ -56,7 +56,7 @@ func ConfigFileConnectors(exchange string, fileteype string) string {
 	if configDir := os.Getenv("DIA_CONFIG_DIR"); configDir != "" { //hack for local tests.
 		return path.Join(configDir, exchange+fileteype)
 	}
-	return os.Getenv("GOPATH") + "/src/github.com/diadata-org/diadata/config/" + exchange + fileteype
+	return "/Users/harjas/files/prokects/diadata/config/" + exchange + fileteype
 }
 
 func NewConfigCollectorsIfExists(exchange string, filetype string) *ConfigCollectors {
